@@ -4,7 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sitenv</groupId>
     <artifactId>referenceccdavalidator</artifactId>
-    <version>1.1.5</version>
+    <!-- 1.1.5 is upstream's number, but this fork is not upstream 1.1.5: it carries the
+         Java 17 / jakarta.servlet / Spring 6 migration and the commons-lang3 shim, none
+         of which is upstream. Reporting a bare 1.1.5 therefore points at source that
+         cannot build this WAR. The qualifier keeps the lineage and states the divergence.
+         finalName is referenceccdaservice, so the built WAR filename is unaffected. -->
+    <version>1.1.5-medplum.1</version>
     <packaging>war</packaging>
     <name>Reference CCDA Validator</name>
     <properties>
@@ -12,8 +17,13 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <code.validator.version>latestVersion</code.validator.version>
-        <content.validator.version>latestVersion</content.validator.version>
+        <!-- Must match the medplum qualifier in the medplum/ forks of those two repos.
+             Upstream declares both as the literal string "latestVersion", which
+             resolves an upstream-built jar out of ~/.m2 just as happily as a
+             fork-built one; the qualifier makes that mixup impossible rather than
+             merely documented. -->
+        <code.validator.version>latestVersion-medplum.1</code.validator.version>
+        <content.validator.version>latestVersion-medplum.1</content.validator.version>
         <logback.version>1.6.1</logback.version>
         <spring.version>6.2.19</spring.version>
         <jackson.version>2.22.1</jackson.version>
