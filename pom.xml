@@ -25,6 +25,7 @@
         <code.validator.version>latestVersion-medplum.1</code.validator.version>
         <content.validator.version>latestVersion-medplum.1</content.validator.version>
         <logback.version>1.6.1</logback.version>
+        <log4j.version>2.26.1</log4j.version>
         <spring.version>6.2.19</spring.version>
         <jackson.version>2.22.1</jackson.version>
         <springdoc.version>2.8.17</springdoc.version>
@@ -284,6 +285,18 @@
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
                 <version>${jackson.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Nothing here depends on log4j directly: log4j-api arrives via
+                 POI, and log4j-to-slf4j via springdoc's spring-boot starter
+                 chain. Two independent paths, so pin them together with the
+                 BOM rather than by artifact, the same way Jackson is handled.
+                 Clears CVE-2026-49844 in 2.24.3. -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
