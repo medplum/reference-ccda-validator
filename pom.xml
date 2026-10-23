@@ -27,7 +27,7 @@
         <logback.version>1.6.1</logback.version>
         <log4j.version>2.26.1</log4j.version>
         <spring.version>6.2.19</spring.version>
-        <jackson.version>2.22.1</jackson.version>
+        <jackson.version>2.22.3</jackson.version>
         <springdoc.version>2.8.17</springdoc.version>
         <!-- springdoc reads Spring Boot's autoconfigure metadata even outside
              Boot; 3.5.x is the line that pairs with Spring Framework 6.2.x. -->
